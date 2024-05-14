@@ -45,7 +45,7 @@ jobs:
       - name: List Contents
         run: |
            echo "Contents of the dist directory (in reverse order):"
-            cd /home/runner/work/blue-cross/blue-cross/dist
+            cd /home/runner/work/state-forest-department/state-forest-department/dist
             ls -lr
 
       - name: Deploy to Server 1
@@ -67,7 +67,7 @@ jobs:
 
       - name: Deploy with rsync
         run: |
-           rsync -avz -e "ssh -i ~/.ssh/id_rsa" ./dist/ ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/harmoni-aid-bap.becknprotocol.io.conf/public
+           rsync -avz -e "ssh -i ~/.ssh/id_rsa" ./dist/ ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/state-forest-department-bap.becknprotocol.io/public
 
 
    
