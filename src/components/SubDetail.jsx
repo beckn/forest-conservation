@@ -21,7 +21,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import dataList from "../assets/apiJson/checkoutForm.json";
 import { useNavigate } from "react-router-dom";
-import { header, buttonCss } from "../styles/branding";
+import { linkColor } from "../styles/branding";
 
 const SubDetail = () => {
   const { t } = useTranslation();
@@ -128,7 +128,10 @@ const SubDetail = () => {
     setIsTermsAccepted(!isTermsAccepted); // Toggle the terms acceptance
     localStorage.setItem(
       "dataShare",
-      JSON.stringify({ ...JSON.parse(localStorage.getItem("dataShare")), isTermsAccepted: !isTermsAccepted }) // Update the terms acceptance in local storage
+      JSON.stringify({
+        ...JSON.parse(localStorage.getItem("dataShare")),
+        isTermsAccepted: !isTermsAccepted,
+      }) // Update the terms acceptance in local storage
     );
   };
 
@@ -321,8 +324,16 @@ const SubDetail = () => {
             isChecked={isTermsAccepted}
             onChange={handleTermsChange} // Update the terms change handler
           >
-            <Text fontSize={12}>
-              {t("I_ACCEPT_THE_TERMS_OF_USE")}
+            <Text fontSize={12} fontWeight={600}>
+              {t("I_ACCEPT_THE")}{" "}
+              <span
+                style={{
+                  color: linkColor.termsAndConditionColor,
+                  textDecoration: `underline ${linkColor.termsAndConditionColor}`,
+                }}
+              >
+                {t("TERMS_AND_CONDITIONS")}
+              </span>
             </Text>
           </Checkbox>
         </Box>
